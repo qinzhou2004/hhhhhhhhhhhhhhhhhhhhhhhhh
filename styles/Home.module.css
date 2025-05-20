@@ -1,0 +1,154 @@
+.container {
+  /* 定义CSS变量在容器级别 */
+  --color-primary: #0070f3;
+  --color-secondary: #00dddd;
+  --message-radius: 18px;
+  --input-radius: 20px;
+  --chat-width: 800px;
+  --chat-height: 600px;
+  --font-family: Arial, sans-serif;
+  --font-size: 16px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: var(--chat-width);
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+.header {
+  text-align: center;
+  padding: 1rem 0;
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  color: white;
+}
+
+.chatLayout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  height: var(--chat-height);
+}
+
+.inputArea {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--chat-width);
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.chatContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+.inputForm {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inputForm input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--input-radius);
+}
+
+.inputForm button {
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--input-radius);
+  cursor: pointer;
+}
+
+.inputForm button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--message-radius);
+  max-width: 80%;
+}
+
+.userMessage {
+  background: var(--color-primary);
+  color: white;
+  margin-left: auto;
+}
+
+.assistantMessage {
+  background: #f0f0f0;
+  margin-right: auto;
+}
+
+.firstMessage {
+  margin-top: auto;
+}
+.ratingMessage {
+  background: #f0f8ff;
+  border: 2px solid #1e90ff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+.ratingMessage a {
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+.typingIndicator {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.typingDot {
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.ratingMessage {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.userMessage, .assistantMessage {
+  transition: all 0.2s ease;
+}
+
+@keyframes typingAnimation {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
